@@ -36,14 +36,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoCodeBuilder.cs" />
+    <Compile Include="Common\Delegates.cs" />
     <Compile Include="Models\SysAutoCode.cs" />
+    <Compile Include="Parsers\IParser.cs" />
+    <Compile Include="Parsers\ParserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AutoCodeService.cs" />
     <Compile Include="Services\IAutoCodeService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Parsers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
