@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zhuang.AutoCode.Models
 {
-    public class Sys_AutoCode
+    public class SysAutoCode
     {
 
     }
