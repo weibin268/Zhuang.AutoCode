@@ -4,10 +4,18 @@ using System.Text;
 
 namespace Zhuang.AutoCode.Parsers
 {
+    public enum ParserMatchMode
+    {
+        Equal,
+        Like,
+    }
+
     public interface IParser
     {
         string Name { get; }
 
-        string Parse();
+        string Parse(string value);
+
+        ParserMatchMode MatchMode { get; }
     }
 }

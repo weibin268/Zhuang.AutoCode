@@ -28,11 +28,27 @@ namespace Zhuang.AutoCode.Parsers
                 return _instance;
             }
         }
-
         
         public ParserRepository()
         {
             _dicParsers = new Dictionary<string, FunParse>();
+        }
+
+        public FunParse GetParser(string key)
+        {
+            if (_dicParsers.ContainsKey(key))
+            {
+                return _dicParsers[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void AddParser(string key, FunParse value)
+        {
+            _dicParsers.Add(key, value);
         }
     }
 }
