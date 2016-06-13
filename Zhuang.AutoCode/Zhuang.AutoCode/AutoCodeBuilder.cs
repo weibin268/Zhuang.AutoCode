@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Zhuang.AutoCode
 {
-    public class Class1
+    public class AutoCodeBuilder
     {
+
     }
 }
