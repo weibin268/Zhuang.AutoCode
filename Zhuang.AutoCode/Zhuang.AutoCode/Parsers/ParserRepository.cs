@@ -22,6 +22,8 @@ namespace Zhuang.AutoCode.Parsers
                         if (_instance == null)
                         {
                             _instance = new ParserRepository();
+                            var a = new DateTimeParser();
+                            _instance.AddParser(a.Name,a.Parse);
                         }
                     }
                 }
