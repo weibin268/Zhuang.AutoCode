@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhuang.AutoCode.Models;
 
 namespace Zhuang.AutoCode.Services
 {
-    public class IAutoCodeService
+    public interface IAutoCodeService
     {
+
+        SysAutoCode GetByCode(string code);
+        
 
     }
 }

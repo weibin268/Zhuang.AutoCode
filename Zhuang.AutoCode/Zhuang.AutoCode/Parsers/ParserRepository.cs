@@ -21,16 +21,22 @@ namespace Zhuang.AutoCode.Parsers
                     {
                         if (_instance == null)
                         {
-                            _instance = new ParserRepository();
-                            var a = new DateTimeParser();
-                            _instance.AddParser(a.Name,a.Parse);
+                            _instance = Create();
                         }
                     }
                 }
                 return _instance;
             }
         }
-        
+
+        private static ParserRepository Create()
+        {
+            var result = new ParserRepository();
+            var dateTimeParser = new DateTimeParser();
+            result.AddParser(dateTimeParser.Name, dateTimeParser.Parse);
+            return result;
+        }
+
         public ParserRepository()
         {
             _dicParsers = new Dictionary<string, FunParse>();
