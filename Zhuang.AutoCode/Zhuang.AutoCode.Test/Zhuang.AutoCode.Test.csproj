@@ -56,6 +56,12 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zhuang.AutoCode\Zhuang.AutoCode.csproj">
+      <Project>{0303e979-90bc-4226-ba91-51fa459bb5b7}</Project>
+      <Name>Zhuang.AutoCode</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

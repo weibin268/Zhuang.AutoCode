@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text.RegularExpressions;
 
 namespace Zhuang.AutoCode.Test
 {
@@ -9,7 +10,8 @@ namespace Zhuang.AutoCode.Test
         [TestMethod]
         public void TestMethod1()
         {
-
+            var str = new AutoCodeBuilder().SetExpression("{d:yyyy}|-{d:HH:mm}").Build();
+            Console.WriteLine(str);
         }
     }
 }
