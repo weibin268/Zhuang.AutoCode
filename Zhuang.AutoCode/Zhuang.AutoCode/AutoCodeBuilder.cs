@@ -44,26 +44,30 @@ namespace Zhuang.AutoCode
                 _expression = model.Expression;
             }
 
-            foreach (string exp in _expression.Split('|'))
+            foreach (string subExp in _expression.Split('|'))
             {
-                var match = _regCode.Match(exp);
+                var match = _regCode.Match(subExp);
                 if (match != null)
                 {
                     string code = match.ToString();
 
-                    string parsed = string.Empty;
+                    var arCode = code.Split(':');
+                    string codeName =arCode[0];
+                    string codeValue = arCode.Length > 1 ? code.Replace(codeName+":","") : string.Empty;
 
-                    var par = ParserRepository.Instance.GetParser(code.Split(':')[0]);
-                    if (par != null)
+                    string parsedText = string.Empty;
+
+                    var parser = ParserRepository.Instance.GetParser(codeName);
+                    if (parser != null)
                     {
-                        parsed=par(code);
+                        parsedText=parser(codeValue);
                     }
 
-                    sbResult.Append(exp.Replace("{" + code + "}", parsed));
+                    sbResult.Append(subExp.Replace("{" + code + "}", parsedText));
                 }
                 else
                 {
-                    sbResult.Append(exp);
+                    sbResult.Append(subExp);
                 }
             }
 

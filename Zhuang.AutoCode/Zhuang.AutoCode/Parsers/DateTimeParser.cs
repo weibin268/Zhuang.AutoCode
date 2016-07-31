@@ -17,7 +17,7 @@ namespace Zhuang.AutoCode.Parsers
 
         public string Parse(string value)
         {
-            string dateFormat = value.Replace(Name+":", "");
+            string dateFormat = value;
             return DateTime.Now.ToString(dateFormat);
         }
     }
