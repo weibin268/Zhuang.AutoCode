@@ -12,9 +12,7 @@ namespace Zhuang.AutoCode.Models
         public string Code { get; set; }
 
         public int Seq { get; set; }
-
-        public int SeqMinLength { get; set; }
-
+        
         public string Expression { get; set; }
 
         public string Description { get; set; }
