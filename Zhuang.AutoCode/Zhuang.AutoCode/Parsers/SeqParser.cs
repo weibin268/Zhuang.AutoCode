@@ -18,6 +18,12 @@ namespace Zhuang.AutoCode.Parsers
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context">context.Parameter格式：“最小长度,是否保持递增”，如：1,0</param>
+        /// <returns></returns>
         public string Parse(ParserContext context)
         {
             var arParam = context.Parameter.Split(',');
