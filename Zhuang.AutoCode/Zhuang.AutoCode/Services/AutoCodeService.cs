@@ -8,11 +8,11 @@ namespace Zhuang.AutoCode.Services
 {
     public class AutoCodeService : IAutoCodeService
     {
-        DbAccessor _dba = DbAccessor.Get();
+        DbAccessor _dba;
 
         public AutoCodeService()
         {
-
+            _dba = DbAccessor.Get();
         }
 
         public AutoCodeService(DbAccessor dba)
