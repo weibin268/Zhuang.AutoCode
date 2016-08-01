@@ -9,7 +9,7 @@ namespace Zhuang.AutoCode
 {
     public class AutoCodeBuilder
     {
-        private Regex _regCode = new Regex(@"(?<=\{)[\w|\W]*(?=\})");
+        private Regex _regCode = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
 
         private string _code;
 
@@ -36,7 +36,7 @@ namespace Zhuang.AutoCode
 
         public string Build()
         {
-            StringBuilder sbResult = new StringBuilder();
+            string result = string.Empty;
 
             if (string.IsNullOrEmpty(_expression))
             {
@@ -44,9 +44,10 @@ namespace Zhuang.AutoCode
                 _expression = model.Expression;
             }
 
-            foreach (string subExp in _expression.Split('|'))
+            result = _expression;
+
+            foreach (var match in _regCode.Matches(_expression))
             {
-                var match = _regCode.Match(subExp);
                 if (match != null)
                 {
                     string code = match.ToString();
@@ -63,15 +64,11 @@ namespace Zhuang.AutoCode
                         parsedText=parser(codeValue);
                     }
 
-                    sbResult.Append(subExp.Replace("{" + code + "}", parsedText));
-                }
-                else
-                {
-                    sbResult.Append(subExp);
+                    result = result.Replace("{" + code + "}", parsedText);
                 }
             }
 
-            return sbResult.ToString();
+            return result;
         }
     }
 }
