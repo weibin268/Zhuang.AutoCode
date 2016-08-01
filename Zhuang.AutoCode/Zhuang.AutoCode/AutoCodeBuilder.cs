@@ -34,6 +34,12 @@ namespace Zhuang.AutoCode
             return this;
         }
 
+        public AutoCodeBuilder SetAutoCodeService(IAutoCodeService autoCodeService)
+        {
+            _autoCodeService = autoCodeService;
+            return this;
+        }
+
         public string Build()
         {
             string result = string.Empty;
