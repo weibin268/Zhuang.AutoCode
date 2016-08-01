@@ -41,7 +41,7 @@ namespace Zhuang.AutoCode.Parsers
 
             if (keepIncrease)
             {
-                prefixCode = null;
+                prefixCode = "none";
             }
 
             var detailModel = _autoCodeService.GetDetailByPrefixCode(context.SysAutoCode.AutoCodeId, prefixCode);
