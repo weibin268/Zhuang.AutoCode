@@ -11,5 +11,8 @@ namespace Zhuang.AutoCode.Parsers
         public SysAutoCode SysAutoCode { get; set; }
 
         public string Parameter { get; set; }
+
+        public string ParsedText { get; set; }
+
     }
 }

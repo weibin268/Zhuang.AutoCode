@@ -7,8 +7,12 @@ namespace Zhuang.AutoCode.Services
 {
     public interface IAutoCodeService
     {
-
         SysAutoCode Get(string id);
 
+        SysAutoCodeDetail GetDetailByPrefixCode(string autoCodeId ,string prefixCode);
+
+        void AddDetail(SysAutoCodeDetail detail);
+
+        void SaveDetail(SysAutoCodeDetail detail);
     }
 }

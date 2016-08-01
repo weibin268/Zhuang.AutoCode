@@ -11,12 +11,12 @@ namespace Zhuang.AutoCode.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var str = new AutoCodeBuilder(new SysAutoCode()
+            for (int i = 0; i < 10; i++)
             {
-                Expression = "zwb-{d:yyyy-MM-dd HH:mm:ss}----{d:HH:mm}"
-            }).Build();
-
-            Console.WriteLine(str);
+                var str = AutoCodeHelper.Get("a");
+                Console.WriteLine(str);
+            }
         }
+
     }
 }

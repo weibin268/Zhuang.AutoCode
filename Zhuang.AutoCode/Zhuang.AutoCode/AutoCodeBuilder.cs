@@ -46,7 +46,7 @@ namespace Zhuang.AutoCode
                     var parser = ParserRepository.Instance.GetParser(codeName);
                     if (parser != null)
                     {
-                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = codeParam });
+                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = codeParam, ParsedText = result });
                     }
 
                     result = result.Replace("{" + code + "}", parsedText);

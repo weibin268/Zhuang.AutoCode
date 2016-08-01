@@ -42,6 +42,7 @@
     <Compile Include="AutoCodeBuilder.cs" />
     <Compile Include="AutoCodeHelper.cs" />
     <Compile Include="Common\Delegates.cs" />
+    <Compile Include="Models\SysAutoCodeDetail.cs" />
     <Compile Include="Models\SysAutoCode.cs" />
     <Compile Include="Parsers\DateTimeParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
