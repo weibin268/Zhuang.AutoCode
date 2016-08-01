@@ -39,14 +39,14 @@ namespace Zhuang.AutoCode
 
                     var arCode = code.Split(':');
                     string codeName =arCode[0];
-                    string codeValue = arCode.Length > 1 ? code.Replace(codeName+":","") : string.Empty;
+                    string codeParam = arCode.Length > 1 ? code.Replace(codeName+":","") : string.Empty;
 
                     string parsedText = string.Empty;
 
                     var parser = ParserRepository.Instance.GetParser(codeName);
                     if (parser != null)
                     {
-                        parsedText=parser(codeValue);
+                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = codeParam });
                     }
 
                     result = result.Replace("{" + code + "}", parsedText);

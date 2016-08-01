@@ -14,7 +14,7 @@ namespace Zhuang.AutoCode.Parsers
             }
         }
 
-        public string Parse(string value)
+        public string Parse(ParserContext context)
         {
             throw new NotImplementedException();
         }

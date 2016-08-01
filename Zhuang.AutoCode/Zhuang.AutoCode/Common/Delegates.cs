@@ -5,6 +5,6 @@ using System.Text;
 namespace Zhuang.AutoCode.Common
 {
 
-    public delegate string FunParse(string value);
+    public delegate string FunParse(Parsers.ParserContext context);
 
 }

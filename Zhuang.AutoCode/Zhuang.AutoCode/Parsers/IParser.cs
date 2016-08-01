@@ -8,7 +8,7 @@ namespace Zhuang.AutoCode.Parsers
     {
         string Name { get; }
 
-        string Parse(string value);
+        string Parse(ParserContext context);
 
     }
 }

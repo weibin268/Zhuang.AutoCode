@@ -15,10 +15,12 @@ namespace Zhuang.AutoCode.Parsers
             }
         }
 
-        public string Parse(string value)
+        public string Parse(ParserContext context)
         {
-            string dateFormat = value;
+
+            string dateFormat = context.Parameter;
             return DateTime.Now.ToString(dateFormat);
         }
+
     }
 }
