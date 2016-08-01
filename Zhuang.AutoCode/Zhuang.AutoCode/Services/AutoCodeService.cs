@@ -10,10 +10,9 @@ namespace Zhuang.AutoCode.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SysAutoCode GetByCode(string code)
+        public SysAutoCode Get(string id)
         {
-            return _dba.SelectList<SysAutoCode>(new { Code = code })[0];
-
+            return _dba.Select<SysAutoCode>(id);
         }
     }
 }

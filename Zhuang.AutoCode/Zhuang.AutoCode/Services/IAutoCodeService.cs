@@ -8,8 +8,7 @@ namespace Zhuang.AutoCode.Services
     public interface IAutoCodeService
     {
 
-        SysAutoCode GetByCode(string code);
-        
+        SysAutoCode Get(string id);
 
     }
 }
