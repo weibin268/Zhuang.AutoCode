@@ -46,6 +46,7 @@
     <Compile Include="Parsers\DateTimeParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Parsers\ParserRepository.cs" />
+    <Compile Include="Parsers\SeqParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AutoCodeService.cs" />
     <Compile Include="Services\IAutoCodeService.cs" />

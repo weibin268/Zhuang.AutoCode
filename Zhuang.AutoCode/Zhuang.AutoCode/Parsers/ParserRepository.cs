@@ -34,6 +34,9 @@ namespace Zhuang.AutoCode.Parsers
             var result = new ParserRepository();
             var dateTimeParser = new DateTimeParser();
             result.AddParser(dateTimeParser.Name, dateTimeParser.Parse);
+
+            var seqParser = new SeqParser();
+            result.AddParser(seqParser.Name,seqParser.Parse);
             return result;
         }
 

@@ -4,21 +4,19 @@ using System.Text;
 
 namespace Zhuang.AutoCode.Parsers
 {
-    class DateTimeParser : IParser
+    class SeqParser : IParser
     {
-
         public string Name
         {
             get
             {
-                return "d";
+                return "seq";
             }
         }
 
         public string Parse(string value)
         {
-            string dateFormat = value;
-            return DateTime.Now.ToString(dateFormat);
+            throw new NotImplementedException();
         }
     }
 }

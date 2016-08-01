@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using Zhuang.AutoCode.Models;
 using Zhuang.AutoCode.Parsers;
 using Zhuang.AutoCode.Services;
 
@@ -11,32 +12,16 @@ namespace Zhuang.AutoCode
     {
         private Regex _regCode = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
 
-        private string _code;
+        private SysAutoCode _sysAutoCode;
 
-        private string _expression;
-
-        private IAutoCodeService _autoCodeService;
-
-        public AutoCodeBuilder()
+        public AutoCodeBuilder(SysAutoCode sysAutoCode)
         {
-
+            _sysAutoCode = sysAutoCode;
         }
 
-        public AutoCodeBuilder SetCode(string code)
+        public AutoCodeBuilder SetSysAutoCode(SysAutoCode sysAutoCode)
         {
-            _code = code;
-            return this;
-        }
-
-        public AutoCodeBuilder SetExpression(string expression)
-        {
-            _expression = expression;
-            return this;
-        }
-
-        public AutoCodeBuilder SetAutoCodeService(IAutoCodeService autoCodeService)
-        {
-            _autoCodeService = autoCodeService;
+            _sysAutoCode = sysAutoCode;
             return this;
         }
 
@@ -44,15 +29,9 @@ namespace Zhuang.AutoCode
         {
             string result = string.Empty;
 
-            if (string.IsNullOrEmpty(_expression))
-            {
-                var model = _autoCodeService.GetByCode(_code);
-                _expression = model.Expression;
-            }
+            result = _sysAutoCode.Expression;
 
-            result = _expression;
-
-            foreach (var match in _regCode.Matches(_expression))
+            foreach (var match in _regCode.Matches(_sysAutoCode.Expression))
             {
                 if (match != null)
                 {
