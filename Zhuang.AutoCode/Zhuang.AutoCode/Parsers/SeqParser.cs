@@ -45,13 +45,9 @@ namespace Zhuang.AutoCode.Parsers
 
             using (var dba = DbAccessorFactory.CreateDbAccessor())
             {
-
                 dba.BeginTran();
-
                 try
                 {
-
-
                     AutoCodeService service = new AutoCodeService(dba);
 
                     var detailModel = service.GetDetailByPrefixCode(context.SysAutoCode.AutoCodeId, prefixCode);
