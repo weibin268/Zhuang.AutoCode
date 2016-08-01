@@ -10,8 +10,6 @@ namespace Zhuang.AutoCode.Parsers
     class SeqParser : IParser
     {
 
-        private IAutoCodeService _autoCodeService = new AutoCodeService();
-
         public string Name
         {
             get
@@ -25,17 +23,18 @@ namespace Zhuang.AutoCode.Parsers
             var arParam = context.Parameter.Split(',');
             int minLength = 0;
             bool keepIncrease = false;
+            string intFormat = "D";
+            int Seq = 0;
 
-            int.TryParse(arParam[0],out minLength);
+            int.TryParse(arParam[0], out minLength);
 
             if (arParam.Length >= 2)
             {
-                if (arParam[1] != "0") { 
+                if (arParam[1] != "0")
+                {
                     keepIncrease = true;
                 }
             }
-
-            DbAccessor dba = DbAccessor.Get();
 
             string prefixCode = context.ParsedText.Split('{')[0];
 
@@ -44,33 +43,56 @@ namespace Zhuang.AutoCode.Parsers
                 prefixCode = "none";
             }
 
-            var detailModel = _autoCodeService.GetDetailByPrefixCode(context.SysAutoCode.AutoCodeId, prefixCode);
-
-            if (detailModel != null)
+            using (var dba = DbAccessorFactory.CreateDbAccessor())
             {
-                detailModel.Seq = detailModel.Seq + 1;
 
-                _autoCodeService.SaveDetail(detailModel);
+                dba.BeginTran();
+
+                try
+                {
+
+
+                    AutoCodeService service = new AutoCodeService(dba);
+
+                    var detailModel = service.GetDetailByPrefixCode(context.SysAutoCode.AutoCodeId, prefixCode);
+
+                    if (detailModel != null)
+                    {
+                        detailModel.Seq = detailModel.Seq + 1;
+
+                        service.SaveDetail(detailModel);
+                    }
+                    else
+                    {
+                        detailModel = new SysAutoCodeDetail();
+                        detailModel.AutoCodeDetailId = Guid.NewGuid().ToString();
+                        detailModel.AutoCodeId = context.SysAutoCode.AutoCodeId;
+                        detailModel.PrefixCode = prefixCode;
+                        detailModel.Seq = 1;
+
+                        service.AddDetail(detailModel);
+                    }
+
+                    intFormat = intFormat + (detailModel.Seq.ToString().Length > minLength ? detailModel.Seq.ToString().Length : minLength);
+
+                    if (minLength == 0)
+                    {
+                        intFormat = null;
+                    }
+
+                    Seq = detailModel.Seq;
+
+                    dba.CommitTran();
+                }
+                catch (Exception)
+                {
+                    dba.RollbackTran();
+                    throw;
+                }
+
             }
-            else
-            {
-                detailModel = new SysAutoCodeDetail();
-                detailModel.AutoCodeDetailId = Guid.NewGuid().ToString();
-                detailModel.AutoCodeId = context.SysAutoCode.AutoCodeId;
-                detailModel.PrefixCode = prefixCode;
-                detailModel.Seq = 1;
 
-                _autoCodeService.AddDetail(detailModel);
-            }
-
-
-            var intFormat = "D" + (detailModel.Seq.ToString().Length > minLength ? detailModel.Seq.ToString().Length : minLength);
-            if (minLength == 0)
-            {
-                intFormat = null;
-            }
-
-            return detailModel.Seq.ToString(intFormat);
+            return Seq.ToString(intFormat);
         }
     }
 }

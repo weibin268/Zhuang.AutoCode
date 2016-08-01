@@ -10,6 +10,16 @@ namespace Zhuang.AutoCode.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
+        public AutoCodeService()
+        {
+
+        }
+
+        public AutoCodeService(DbAccessor dba)
+        {
+            _dba = dba;
+        }
+
         public void AddDetail(SysAutoCodeDetail detail)
         {
             _dba.Insert(detail);
