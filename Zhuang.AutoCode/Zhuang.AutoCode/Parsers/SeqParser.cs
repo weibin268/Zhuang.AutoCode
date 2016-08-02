@@ -26,7 +26,7 @@ namespace Zhuang.AutoCode.Parsers
         {
             string result = string.Empty;
 
-            using (TransactionScope scope = new TransactionScope())
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
             {
                 result = GetSeq(context);
                 scope.Complete();
