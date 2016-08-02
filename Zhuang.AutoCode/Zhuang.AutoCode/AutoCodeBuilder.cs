@@ -10,7 +10,7 @@ namespace Zhuang.AutoCode
 {
     public class AutoCodeBuilder
     {
-        private Regex _regCode = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
+        private Regex _regExpressionTag = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
 
         private SysAutoCode _sysAutoCode;
 
@@ -31,25 +31,25 @@ namespace Zhuang.AutoCode
 
             result = _sysAutoCode.Expression;
 
-            foreach (var match in _regCode.Matches(_sysAutoCode.Expression))
+            foreach (var match in _regExpressionTag.Matches(_sysAutoCode.Expression))
             {
                 if (match != null)
                 {
-                    string code = match.ToString();
+                    string tag = match.ToString();
 
-                    var arCode = code.Split(':');
-                    string codeName =arCode[0];
-                    string codeParam = arCode.Length > 1 ? code.Replace(codeName+":","") : string.Empty;
+                    var arTag = tag.Split(':');
+                    string tagName =arTag[0];
+                    string tagParam = arTag.Length > 1 ? tag.Replace(tagName+":","") : string.Empty;
 
                     string parsedText = string.Empty;
 
-                    var parser = ParserRepository.Instance.GetParser(codeName);
+                    var parser = ParserRepository.Instance.GetParser(tagName);
                     if (parser != null)
                     {
-                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = codeParam, ParsedText = result });
+                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = tagParam, ParsedText = result });
                     }
 
-                    result = result.Replace("{" + code + "}", parsedText);
+                    result = result.Replace("{" + tag + "}", parsedText);
                 }
             }
 
