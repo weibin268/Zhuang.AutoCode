@@ -18,7 +18,7 @@ namespace Zhuang.AutoCode.Parsers
         }
 
         /// <summary>
-        /// 
+        /// 参数解析，参式格式：{seq:4,0}
         /// </summary>
         /// <param name="context">context.Parameter格式：“最小长度,是否保持递增”，如：1,0</param>
         /// <returns></returns>

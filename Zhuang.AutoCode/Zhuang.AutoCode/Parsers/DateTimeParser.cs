@@ -14,7 +14,11 @@ namespace Zhuang.AutoCode.Parsers
                 return "d";
             }
         }
-
+        /// <summary>
+        /// 参数解析，参式格式：{d:yyyyMMdd}
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public string Parse(ParserContext context)
         {
 
