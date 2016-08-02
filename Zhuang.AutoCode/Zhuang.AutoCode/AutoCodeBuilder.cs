@@ -25,6 +25,14 @@ namespace Zhuang.AutoCode
             return this;
         }
 
+        public void ReplaceExpression(params string[] args)
+        {
+            for (int i = 0; i < args.Length; i++)
+            {
+                _sysAutoCode.Expression = _sysAutoCode.Expression.Replace("{" + i + "}", args[i]);
+            }
+        }
+
         public string Build()
         {
             string result = string.Empty;
