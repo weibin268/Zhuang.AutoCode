@@ -13,7 +13,7 @@ namespace Zhuang.AutoCode.Test
         {
             for (int i = 0; i < 10; i++)
             {
-                var str = AutoCodeHelper.Get("c");
+                var str = new AutoCodeBuilder("c").Build();
                 Console.WriteLine(str);
             }
         }

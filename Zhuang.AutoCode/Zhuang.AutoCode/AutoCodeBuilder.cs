@@ -14,6 +14,13 @@ namespace Zhuang.AutoCode
 
         private SysAutoCode _sysAutoCode;
 
+
+        public AutoCodeBuilder(string autoCodeId)
+        {
+            IAutoCodeService service = new AutoCodeService();
+            _sysAutoCode = service.Get(autoCodeId);
+        }
+
         public AutoCodeBuilder(SysAutoCode sysAutoCode)
         {
             _sysAutoCode = sysAutoCode;
