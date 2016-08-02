@@ -4,7 +4,6 @@ using System.Text;
 using System.Transactions;
 using Zhuang.AutoCode.Models;
 using Zhuang.AutoCode.Services;
-using Zhuang.Data;
 
 namespace Zhuang.AutoCode.Parsers
 {
