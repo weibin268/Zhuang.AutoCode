@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Zhuang.AutoCode.Models;
+using Zhuang.AutoCode.Services;
 
 namespace Zhuang.AutoCode.Parsers
 {
@@ -14,5 +15,6 @@ namespace Zhuang.AutoCode.Parsers
 
         public string ParsedText { get; set; }
 
+        public IAutoCodeService Service { get; set; }
     }
 }

@@ -13,23 +13,17 @@ namespace Zhuang.AutoCode
         private Regex _regExpressionTag = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
 
         private SysAutoCode _sysAutoCode;
+        IAutoCodeService _service;
 
-
-        public AutoCodeBuilder(string autoCodeId)
+        public AutoCodeBuilder(string autoCodeId):this(autoCodeId, new AutoCodeService())
         {
-            IAutoCodeService service = new AutoCodeService();
-            _sysAutoCode = service.Get(autoCodeId);
+
         }
 
-        public AutoCodeBuilder(SysAutoCode sysAutoCode)
+        public AutoCodeBuilder(string autoCodeId, IAutoCodeService service)
         {
-            _sysAutoCode = sysAutoCode;
-        }
-
-        public AutoCodeBuilder SetSysAutoCode(SysAutoCode sysAutoCode)
-        {
-            _sysAutoCode = sysAutoCode;
-            return this;
+            _service = service;
+            _sysAutoCode = _service.Get(autoCodeId);
         }
 
         public AutoCodeBuilder ReplaceExpression(params string[] args)
@@ -63,7 +57,13 @@ namespace Zhuang.AutoCode
                     var parser = ParserRepository.Instance.GetParser(tagName);
                     if (parser != null)
                     {
-                        parsedText = parser(new ParserContext() { SysAutoCode = _sysAutoCode, Parameter = tagParam, ParsedText = result });
+                        parsedText = parser(new ParserContext()
+                        {
+                            SysAutoCode = _sysAutoCode,
+                            Parameter = tagParam,
+                            ParsedText = result,
+                            Service = _service
+                        });
                     }
 
                     result = result.Replace("{" + tag + "}", parsedText);
