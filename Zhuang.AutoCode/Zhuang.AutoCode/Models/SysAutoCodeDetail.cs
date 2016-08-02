@@ -16,5 +16,8 @@ namespace Zhuang.AutoCode.Models
 
         public int Seq { get; set; }
 
+        public DateTime? CreationDate { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
     }
 }

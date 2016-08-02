@@ -58,9 +58,12 @@ namespace Zhuang.AutoCode.Parsers
 
                     var detailModel = service.GetDetailByPrefixCode(context.SysAutoCode.AutoCodeId, prefixCode);
 
+                    DateTime dtNow = DateTime.Now;
+
                     if (detailModel != null)
                     {
                         detailModel.Seq = detailModel.Seq + 1;
+                        detailModel.ModifiedDate = dtNow;
 
                         service.SaveDetail(detailModel);
                     }
@@ -71,6 +74,8 @@ namespace Zhuang.AutoCode.Parsers
                         detailModel.AutoCodeId = context.SysAutoCode.AutoCodeId;
                         detailModel.PrefixCode = prefixCode;
                         detailModel.Seq = 1;
+                        detailModel.CreationDate = dtNow;
+                        detailModel.ModifiedDate = dtNow;
 
                         service.AddDetail(detailModel);
                     }
