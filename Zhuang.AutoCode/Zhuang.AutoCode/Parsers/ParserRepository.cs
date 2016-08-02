@@ -32,11 +32,11 @@ namespace Zhuang.AutoCode.Parsers
         private static ParserRepository Create()
         {
             var result = new ParserRepository();
-            var dateTimeParser = new DateTimeParser();
-            result.AddParser(dateTimeParser.Name, dateTimeParser.Parse);
 
-            var seqParser = new SeqParser();
-            result.AddParser(seqParser.Name,seqParser.Parse);
+            result.AddParser(new DateTimeParser());
+
+            result.AddParser(new SeqParser());
+
             return result;
         }
 
@@ -45,11 +45,11 @@ namespace Zhuang.AutoCode.Parsers
             _dicParsers = new Dictionary<string, FunParse>();
         }
 
-        public FunParse GetParser(string key)
+        public FunParse GetParser(string name)
         {
-            if (_dicParsers.ContainsKey(key))
+            if (_dicParsers.ContainsKey(name))
             {
-                return _dicParsers[key];
+                return _dicParsers[name];
             }
             else
             {
@@ -57,9 +57,9 @@ namespace Zhuang.AutoCode.Parsers
             }
         }
 
-        public void AddParser(string key, FunParse value)
+        public void AddParser(IParser parser)
         {
-            _dicParsers.Add(key, value);
+            _dicParsers.Add(parser.Name, parser.Parse);
         }
     }
 }
