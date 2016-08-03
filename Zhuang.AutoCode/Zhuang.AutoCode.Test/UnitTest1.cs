@@ -13,8 +13,8 @@ namespace Zhuang.AutoCode.Test
         {
             for (int i = 0; i < 10; i++)
             {
-                var str = new AutoCodeBuilder("c").ReplaceExpression("A","B").Build();
-                str = new AutoCodeBuilder("c").ReplaceExpression("A", "D").Build();
+                var str = new AutoCodeBuilder("c").StuffExpression("A","B").Build();
+                str = new AutoCodeBuilder("c").StuffExpression("A", "D").Build();
 
                 Console.WriteLine(str);
             }

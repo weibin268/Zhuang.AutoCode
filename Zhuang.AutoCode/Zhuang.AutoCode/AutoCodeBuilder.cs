@@ -26,7 +26,7 @@ namespace Zhuang.AutoCode
             _sysAutoCode = _service.Get(autoCodeId);
         }
 
-        public AutoCodeBuilder ReplaceExpression(params string[] args)
+        public AutoCodeBuilder StuffExpression(params string[] args)
         {
             for (int i = 0; i < args.Length; i++)
             {
