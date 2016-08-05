@@ -15,7 +15,7 @@ namespace Zhuang.AutoCode
         private SysAutoCode _sysAutoCode;
         IAutoCodeService _service;
 
-        public AutoCodeBuilder(string autoCodeId):this(autoCodeId, new AutoCodeService())
+        public AutoCodeBuilder(string autoCodeId):this(autoCodeId, new DefaultAutoCodeService())
         {
 
         }

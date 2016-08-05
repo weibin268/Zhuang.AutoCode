@@ -6,11 +6,11 @@ using Zhuang.Data;
 
 namespace Zhuang.AutoCode.Services
 {
-    public class AutoCodeService : IAutoCodeService
+    public class DefaultAutoCodeService : IAutoCodeService
     {
         DbAccessor _dba;
 
-        public AutoCodeService()
+        public DefaultAutoCodeService()
         {
             _dba = DbAccessor.Get();
         }
