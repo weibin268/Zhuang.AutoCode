@@ -35,7 +35,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Zhuang.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zhuang.Data.1.2.4\lib\net20\Zhuang.Data.dll</HintPath>
+      <HintPath>..\packages\Zhuang.Data.1.2.7\lib\net20\Zhuang.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
