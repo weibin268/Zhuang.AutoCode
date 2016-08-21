@@ -35,7 +35,7 @@ namespace Zhuang.AutoCode.Parsers
 
             result.AddParser(new DateTimeParser());
 
-            result.AddParser(new SeqParser());
+            result.AddParser(new SequenceParser());
 
             return result;
         }

@@ -48,7 +48,7 @@
     <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Parsers\ParserContext.cs" />
     <Compile Include="Parsers\ParserRepository.cs" />
-    <Compile Include="Parsers\SeqParser.cs" />
+    <Compile Include="Parsers\SequenceParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DefaultAutoCodeService.cs" />
     <Compile Include="Services\IAutoCodeService.cs" />

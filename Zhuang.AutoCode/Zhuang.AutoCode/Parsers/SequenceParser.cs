@@ -7,7 +7,7 @@ using Zhuang.AutoCode.Services;
 
 namespace Zhuang.AutoCode.Parsers
 {
-    class SeqParser : IParser
+    class SequenceParser : IParser
     {
         public string Name
         {
