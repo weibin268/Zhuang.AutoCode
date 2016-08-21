@@ -15,8 +15,8 @@ namespace Zhuang.AutoCode.Models
         public string PrefixCode { get; set; }
 
         public int Seq { get; set; }
-
-        public DateTime? CreationDate { get; set; }
+        
+        public DateTime? CreatedDate { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
     }
