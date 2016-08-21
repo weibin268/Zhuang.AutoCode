@@ -79,7 +79,7 @@ namespace Zhuang.AutoCode.Parsers
                 detailModel.AutoCodeId = context.SysAutoCode.AutoCodeId;
                 detailModel.PrefixCode = prefixCode;
                 detailModel.Seq = 1;
-                detailModel.CreationDate = dtNow;
+                detailModel.CreatedDate = dtNow;
                 detailModel.ModifiedDate = dtNow;
 
                 context.Service.AddDetail(detailModel);
