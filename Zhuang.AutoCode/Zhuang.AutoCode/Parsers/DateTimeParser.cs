@@ -11,11 +11,11 @@ namespace Zhuang.AutoCode.Parsers
         {
             get
             {
-                return "d";
+                return "dt";
             }
         }
         /// <summary>
-        /// 参数解析，参式格式：{d:yyyyMMdd}
+        /// 参数解析，参式格式：{dt:yyyyMMdd}
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
