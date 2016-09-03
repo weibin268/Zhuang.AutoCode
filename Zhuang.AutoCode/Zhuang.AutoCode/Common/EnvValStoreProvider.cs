@@ -11,13 +11,16 @@ namespace Zhuang.AutoCode.Common
         {
             var dicResult = new Dictionary<string, object>();
 
-            dicResult.Add("AutoCode", new MyEnvFunc((c) =>
+            var autoCode = new MyEnvFunc((c) =>
             {
                 var autoCodeBuilder = new AutoCodeBuilder(c);
 
                 return autoCodeBuilder.Build();
 
-            }));
+            });
+
+            dicResult.Add("AutoCode", autoCode);
+            dicResult.Add("autocode", autoCode);
 
             return dicResult;
         }
