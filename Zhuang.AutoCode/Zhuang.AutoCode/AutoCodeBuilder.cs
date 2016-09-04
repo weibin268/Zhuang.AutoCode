@@ -10,7 +10,7 @@ namespace Zhuang.AutoCode
 {
     public class AutoCodeBuilder
     {
-        private Regex _regExpressionTag = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
+        private Regex _expressionTagPattern = new Regex(@"(?<=\{)[^\{\}]+(?=\})");
 
         private SysAutoCode _sysAutoCode;
         IAutoCodeService _service;
@@ -42,7 +42,7 @@ namespace Zhuang.AutoCode
 
             result = _sysAutoCode.Expression;
 
-            foreach (var match in _regExpressionTag.Matches(_sysAutoCode.Expression))
+            foreach (var match in _expressionTagPattern.Matches(_sysAutoCode.Expression))
             {
                 if (match != null)
                 {
