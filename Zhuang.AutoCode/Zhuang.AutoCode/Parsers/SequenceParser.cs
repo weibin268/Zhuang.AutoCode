@@ -26,11 +26,13 @@ namespace Zhuang.AutoCode.Parsers
         {
             string result = string.Empty;
 
-            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
-            {
+            //using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
+            //{
+
                 result = GetSeq(context);
-                scope.Complete();
-            }
+
+                //scope.Complete();
+            //}
 
             return result;
         }
