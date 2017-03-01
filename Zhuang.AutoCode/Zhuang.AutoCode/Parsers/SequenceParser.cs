@@ -99,4 +99,5 @@ namespace Zhuang.AutoCode.Parsers
             return Seq.ToString(intFormat);
         }
     }
+
 }
